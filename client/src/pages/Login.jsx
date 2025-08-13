@@ -34,28 +34,58 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={loginUser}>
-        <h1>Login</h1>
-        <label>Email</label>
-        <input
-          type="email"
-          placeholder="enter email"
-          value={data.email}
-          onChange={(event) => setData({ ...data, email: event.target.value })}
-        />
-        <br />
-        <label>Password</label>
-        <input
-          type="password"
-          placeholder="enter password"
-          value={data.password}
-          onChange={(event) =>
-            setData({ ...data, password: event.target.value })
-          }
-        />
-        <br />
-        <button type="submit">Login</button>
+    <div
+      onSubmit={loginUser}
+      class="flex justify-center items-center h-screen bg-[#3B40E8]"
+    >
+      <form class="w-96 p-6 shadow-lg bg-white rounded-md">
+        <h1 class="text-3xl block text-center font-semibold">
+          <i class="fa-solid fa-user"></i> Login
+        </h1>
+        <hr class="mt-3" />
+        <div class="mt-3">
+          <label for="username" class="block text-base mb-2">
+            Username
+          </label>
+          <input
+            type="email"
+            placeholder="enter email"
+            value={data.email}
+            onChange={(event) =>
+              setData({ ...data, email: event.target.value })
+            }
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+          />
+        </div>
+        <div class="mt-3">
+          <label for="password" class="block text-base mb-2">
+            Password
+          </label>
+          <input
+            type="password"
+            placeholder="enter password"
+            value={data.password}
+            onChange={(event) =>
+              setData({ ...data, password: event.target.value })
+            }
+            class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+          />
+        </div>
+        <div class="mt-3 flex justify-between items-center">
+          <div>
+            <a href="#" class="text-[#3B40E8] font-semibold">
+              Sign up?
+            </a>
+          </div>
+        </div>
+        <div class="mt-5">
+          <button
+            type="submit"
+            class="border-2 border-[#3B40E8] bg-[#3B40E8] text-white py-1 w-full rounded-md hover:bg-transparent hover:text-[#3B40E8] font-semibold"
+          >
+            <i class="fa-solid fa-right-to-bracket"></i>&nbsp;&nbsp;Login
+          </button>
+        </div>
       </form>
     </div>
   );

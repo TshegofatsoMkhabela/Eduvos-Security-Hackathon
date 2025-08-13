@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../src/components/Navbar";
-import Home from "../src/pages/Home";
 import Register from "../src/pages/Register";
 import Login from "../src/pages/Login";
 import Dashboard from "./pages/Dashboard";
@@ -8,7 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import axios from "axios";
 import { Toaster } from "react-hot-toast";
 import { UserContextProvider } from "./context/UserContext";
-import LandingPage from "./pages/LandingPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 axios.defaults.withCredentials = true;
@@ -23,7 +23,15 @@ const App = () => {
 
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </UserContextProvider>
   );
